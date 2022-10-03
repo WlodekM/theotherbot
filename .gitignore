@@ -1,0 +1,7 @@
+# Local stuff
+**/CREDENTIALS.txt
+
+# Other stuff
+**/__pycache__
+**/venv
+**/.config
