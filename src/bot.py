@@ -7,7 +7,12 @@ class Commands:
     def whois(cl, chat, user, args):
         target_user = args[0]
         userinfo = json.loads(requests.get(f"https://api.meower.org/users/{target_user}").text)
-        response = f"-- {target_user.upper()} --\nUsername: {userinfo['lower_username']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated (for now): {userinfo['created']}"
+
+        if "created" in userinfo.keys():
+            response = f"-- {target_user.upper()} --\nUsername: {userinfo['lower_username']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated (for now): {userinfo['created']}"
+        else:
+            response = f"-- {target_user.upper()} --\nUsername: {userinfo['lower_username']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}"
+
         post(cl, response, chat = chat)
 
 def post(cl, msg: str, chat = "home"):
