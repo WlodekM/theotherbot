@@ -27,5 +27,6 @@ def get_commands():
     Get bot's commands
     """
     return {
-        "help": bot.Commands.help
+        "help": bot.Commands.help,
+        "whois": bot.Commands.whois
     }

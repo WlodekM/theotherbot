@@ -1,6 +1,14 @@
+import requests, json
+
 class Commands:
     def help(cl, chat, user, args):
         post(cl, "Hi! I'm a work-in-progress meower bot created by @theotherhades (Find me in the meower discord)\nCurrently I'm featureless, but stay tuned 😉", chat = chat)
+
+    def whois(cl, chat, user, args):
+        target_user = args[0]
+        userinfo = json.loads(requests.get(f"https://api.meower.org/users/{target_user}").text)
+        response = f"-- {target_user.upper()} --\nUsername: {userinfo['lower_username']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated (for now): {userinfo['created']}"
+        post(cl, response, chat = chat)
 
 def post(cl, msg: str, chat = "home"):
     """
