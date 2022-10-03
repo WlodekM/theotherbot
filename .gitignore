@@ -1,5 +1,5 @@
 # Local stuff
-**/CREDENTIALS.txt
+**/CREDENTIALS.json
 
 # Other stuff
 **/__pycache__
