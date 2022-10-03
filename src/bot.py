@@ -1,6 +1,6 @@
 class Commands:
     def help(cl, chat, user, args):
-        post(cl, "test for now", chat = chat)
+        post(cl, "Hi! I'm a work-in-progress meower bot created by @theotherhades (Find me in the meower discord)\nCurrently I'm featureless, but stay tuned 😉", chat = chat)
 
 def post(cl, msg: str, chat = "home"):
     """
