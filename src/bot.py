@@ -6,17 +6,14 @@ class Commands:
 
     def whois(cl, chat, user, args):
         target_user = args[0]
-        try:
-            userinfo = json.loads(requests.get(f"https://api.meower.org/users/{target_user}").text)
+        userinfo = json.loads(requests.get(f"https://api.meower.org/users/{target_user}").text)
 
-            if "created" in userinfo.keys():
-                response = f"-- {target_user.upper()} --\nUsername: {userinfo['lower_username']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated (for now): {userinfo['created']}"
-            else:
-                response = f"-- {target_user.upper()} --\nUsername: {userinfo['lower_username']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}"
+        if "created" in userinfo.keys():
+            response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated (for now): {userinfo['created']}"
+        else:
+            response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}"
 
-            post(cl, response, chat = chat)
-        except Exception as e:
-            print(f"An exception was raised in bot.Commands.whois:\n{str(e)}")
+        post(cl, response, chat = chat)
 
 def post(cl, msg: str, chat = "home"):
     """
