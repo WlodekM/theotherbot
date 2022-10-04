@@ -51,7 +51,7 @@ class Bot:
 
         elif "post_origin" in packet["val"]:
             packet = packet["val"]
-            packet["p"] = packet["p"].lower()
+            # packet_lower = packet["p"].lower()
 
             if packet["u"] == "Discord":
                 packet["p"] = packet["p"].replace(f"{packet['p'].split(':')[0]}: ", "")
