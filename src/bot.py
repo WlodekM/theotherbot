@@ -36,7 +36,7 @@ class Commands:
         all_defs = list(
             dictionary.meaning(args[0]).values()
         )
-        first_def = all_defs[0]
+        first_def = all_defs[0][0]
         post(cl, first_def, chat = chat)
 
 def post(cl, msg: str, chat = "home"):
