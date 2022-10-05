@@ -33,7 +33,11 @@ class Commands:
             post(cl, f"I can't roll a dice with {args[0]} sides! Please try again with an actual number")
 
     def define(cl, chat, user, args):
-        post(cl, f"{list(dictionary.meaning(args[0]).values())[0]}", chat = chat)
+        all_defs = list(
+            dictionary.meaning(args[0]).values()
+        )
+        first_def = all_defs[0]
+        post(cl, first_def, chat = chat)
 
 def post(cl, msg: str, chat = "home"):
     """
