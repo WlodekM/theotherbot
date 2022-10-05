@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 import src.bot as bot
 import src.utils as utils
 from cloudlink import CloudLink
@@ -11,7 +12,9 @@ class Bot:
 
         # Pinger
         def pinger():
-            cl.sendPacket({"cmd": "ping", "val": ""})
+            while True:
+                time.sleep(15)
+                cl.sendPacket({"cmd": "ping", "val": ""})
 
         cl_pinger = Thread(target = pinger)
         cl_pinger.daemon = True
