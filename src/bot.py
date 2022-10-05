@@ -1,4 +1,5 @@
 import requests, json
+from datetime import datetime
 
 class Commands:
     def help(cl, chat, user, args):
@@ -9,7 +10,7 @@ class Commands:
         userinfo = json.loads(requests.get(f"https://api.meower.org/users/{target_user}").text)
 
         if "created" in userinfo.keys():
-            response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated (for now): {userinfo['created']}"
+            response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated: {datetime.utcfromtimestamp(userinfo['created']).strftime('%Y/%m/%d %H:%M:%S')}"
         else:
             response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}"
 
