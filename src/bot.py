@@ -26,10 +26,10 @@ class Commands:
         post(cl, response, chat = chat)
 
     def dice(cl, chat, user, args):
-        if type(args[0]) == int:
+        try:
             num = random.randint(1, int(args[0]))
             post(cl, f"You rolled a {num} (1-{args[0]})", chat = chat)
-        else:
+        except TypeError:
             post(cl, f"I can't roll a dice with {args[0]} sides! Please try again with an actual number")
 
     def define(cl, chat, user, args):
