@@ -29,11 +29,11 @@ class Commands:
         try:
             num = random.randint(1, int(args[0]))
             post(cl, f"You rolled a {num} (1-{args[0]})", chat = chat)
-        except TypeError:
+        except ValueError:
             post(cl, f"I can't roll a dice with {args[0]} sides! Please try again with an actual number")
 
     def define(cl, chat, user, args):
-        post(cl, dictionary.meaning(args[0]), chat = chat)
+        post(cl, str(dictionary.meaning(args[0])), chat = chat)
 
 def post(cl, msg: str, chat = "home"):
     """
