@@ -14,9 +14,9 @@ class Commands:
 
         if userinfo["error"] == False:
             if "created" in userinfo.keys():
-                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nCreated: {datetime.utcfromtimestamp(userinfo['created']).strftime('%Y/%m/%d at %H:%M:%S')} (this is a bit broken lol)"
+                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}\nCreated: {datetime.utcfromtimestamp(userinfo['created']).strftime('%Y/%m/%d at %H:%M:%S')} (this is a bit broken lol)"
             else:
-                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}"
+                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}"
         else:
             if userinfo["type"] == "notFound":
                 response = f"🤔 Hmm... it appears the user '{target_user}' doesn't exist on meower. Check the capitalization and try again. [error type: '{userinfo['type']}']"
