@@ -6,7 +6,7 @@ dictionary = PyDictionary()
 
 class Commands:
     def help(cl, chat, user, args):
-        post(cl, "Hi! I'm a work-in-progress meower bot created by @theotherhades (Find me in the meower discord)\nCurrently I'm featureless, but stay tuned 😉", chat = chat)
+        post(cl, "help command or something idk\ncommands: whois, dice, define", chat = chat)
 
     def whois(cl, chat, user, args):
         target_user = args[0]
