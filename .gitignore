@@ -1,6 +1,10 @@
 # Local stuff
 **/CREDENTIALS.json
 
+# Replit stuff
+**/replit.nix
+**/.replit
+
 # Other stuff
 **/__pycache__
 **/venv
