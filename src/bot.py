@@ -6,7 +6,7 @@ dictionary = PyDictionary()
 
 class Commands:
     def help(cl, chat, user, args):
-        post(cl, "help command or something idk\ncommands: whois, dice, define", chat = chat)
+        post(cl, "Commands:\n- whois\n- dice\n- define", chat = chat)
 
     def whois(cl, chat, user, args):
         target_user = args[0]
@@ -14,12 +14,12 @@ class Commands:
 
         if userinfo["error"] == False:
             if "created" in userinfo.keys():
-                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}\nCreated: {datetime.utcfromtimestamp(userinfo['created']).strftime('%Y/%m/%d at %H:%M:%S')} (this is a bit broken lol)"
+                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}\nCreated: {datetime.utcfromtimestamp(userinfo['created']).strftime('%Y/%m/%d at %H:%M:%S')}"
             else:
                 response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}"
         else:
             if userinfo["type"] == "notFound":
-                response = f"🤔 Hmm... it appears the user '{target_user}' doesn't exist on meower. Check the capitalization and try again. [error type: '{userinfo['type']}']"
+                response = f"🤔 Hmm... it appears the user \"{target_user}\" doesn't exist on meower. Check the capitalization and try again. [error type: '{userinfo['type']}']"
             else:
                 response = f"An error occured 💀 [error type: '{userinfo['type']}']"
 
@@ -30,7 +30,7 @@ class Commands:
             num = random.randint(1, int(args[0]))
             post(cl, f"You rolled a {num} (1-{args[0]})", chat = chat)
         except ValueError:
-            post(cl, f"I can't roll a dice with {args[0]} sides! Please try again with an actual number")
+            post(cl, f"I can't roll a dice with \"{args[0]}\" sides!")
 
     def define(cl, chat, user, args):
         all_defs = list(

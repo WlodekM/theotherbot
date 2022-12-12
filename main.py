@@ -50,8 +50,6 @@ class Bot:
         elif ("mode" in packet["val"]) and (packet["val"]["mode"] == "auth"):
             print("yourmother is online (check at https://svelte.meower.org)")
 
-            bot.post(cl, "yourmother entered the chat")
-
         elif "post_origin" in packet["val"]:
             packet = packet["val"]
             # packet_lower = packet["p"].lower()
