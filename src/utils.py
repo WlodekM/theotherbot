@@ -28,6 +28,7 @@ def get_commands():
     """
     return {
         "help": bot.Commands.help,
+        "botinfo": bot.Commands.botinfo,
         "whois": bot.Commands.whois,
         "dice": bot.Commands.dice,
         "define": bot.Commands.define

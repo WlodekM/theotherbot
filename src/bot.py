@@ -6,7 +6,7 @@ dictionary = PyDictionary()
 
 class Commands:
     def help(cl, chat, user, args):
-        post(cl, "Commands:\n- whois\n- botin\n- dice\n- define", chat = chat)
+        post(cl, "Commands:\n- whois\n- botinfo\n- dice\n- define", chat = chat)
         
     def botinfo(cl, chat, user, args):
         post(cl, "Yourmother: a Meower bot by @theotherhades\nMade with CloudLink and Python3, hosted on https://railway.app\nGitHub: https://github.com/theotherhades/yourmother-meower-bot", chat = chat)
