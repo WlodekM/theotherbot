@@ -79,6 +79,11 @@ class Bot:
                     new_analytics.append(str(analytics[0] + 1))
                     if cmd == "whois": new_analytics.append(str(analytics[1] + 1))
                     
+                    if len(new_analytics) == 2:
+                        new_quote = f"{new_analytics[0]};{new_analytics[1]}"
+                    else:
+                        new_quote = f"{new_analytics[0]};{analytics[1]}"
+
                     cl.sendPacket({"cmd": "direct", "val": {
                         "cmd": "update_config",
                         "val": {
@@ -89,7 +94,7 @@ class Bot:
                             "bgm_song": 2,
                             "layout": "new",
                             "pfp_data": 6,
-                            "quote": f"{new_analytics[0]};{new_analytics[1]}",
+                            "quote": new_quote,
                             "sfx": True,
                         }
                     }})
