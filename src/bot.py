@@ -2,8 +2,6 @@ import requests, json, random
 from datetime import datetime
 from PyDictionary import PyDictionary
 
-dictionary = PyDictionary()
-
 class Commands:
     def help(cl, chat, user, args):
         post(cl, "Commands:\n- whois\n- botinfo\n- dice\n- define", chat = chat)
@@ -17,9 +15,9 @@ class Commands:
 
         if userinfo["error"] == False:
             if "created" in userinfo.keys():
-                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}\nCreated: {datetime.utcfromtimestamp(userinfo['created']).strftime('%Y/%m/%d at %H:%M:%S')}"
+                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nLevel: {user_levels[str(userinfo['lvl'])].title()}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}\nCreated: {datetime.utcfromtimestamp(userinfo['created']).strftime('%Y/%m/%d at %H:%M:%S')}"
             else:
-                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}"
+                response = f"-- {target_user.upper()} --\nUsername: {userinfo['_id']}\nLevel: {user_levels[str(userinfo['lvl'])].title()}\nIs banned: {'yes' if userinfo['banned'] == True else 'no'}\nQuote: {userinfo['quote']}"
         else:
             if userinfo["type"] == "notFound":
                 response = f"🤔 Hmm... it appears the user \"{target_user}\" doesn't exist on meower. Check the capitalization and try again. [error type: '{userinfo['type']}']"
@@ -50,3 +48,12 @@ def post(cl, msg: str, chat = "home"):
         cl.sendPacket({"cmd": "direct", "val": {"cmd": "post_home", "val": msg}})
     else:
         cl.sendPacket({"cmd": "direct", "val": {"cmd": "post_chat", "val": {"chatid": chat, "p": msg}}})
+
+dictionary = PyDictionary()
+user_levels = {
+    "0": "user",
+    "1": "lower moderator",
+    "2": "moderator",
+    "3": "admin",
+    "4": "sysadmin"
+}
