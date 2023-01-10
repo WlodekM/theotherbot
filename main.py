@@ -69,6 +69,30 @@ class Bot:
                         args.append(i)
                     
                     cmds[cmd](cl, packet["post_origin"], packet["u"], args)
+                    
+                    # Keep track of how many commands and whois commands have been used
+                    analytics = list()
+                    for i in json.loads(requests.get("https://api.meower.org/users/yourmother").text)["quote"].split(";"):
+                        analytics.append(int(i))
+                    
+                    new_analytics = list()
+                    new_analytics.append(str(analytics[0] + 1))
+                    if cmd == "whois": new_analytics.append(str(analytics[1] + 1))
+                    
+                    cl.sendPacket({"cmd": "direct", "val": {
+                        "cmd": "update_config",
+                        "val": {
+                            "unread_inbox": True,
+                            "theme": "blue",
+                            "mode": False,
+                            "bgm": True,
+                            "bgm_song": 2,
+                            "layout": "new",
+                            "pfp_data": 6,
+                            "quote": f"{new_analytics[0]};{new_analytics[1]}",
+                            "sfx": True,
+                        }
+                    }})
                 
                 else:
                     print(f"Unknown command: {packet['p']}")
