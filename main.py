@@ -71,7 +71,7 @@ class Bot:
                     cmds[cmd](cl, packet["post_origin"], packet["u"], args)
                 
                 else:
-                    bot.post(cl, f"@{packet['u']} L bozo idk what that command is")
+                    print(f"Unknown command: {packet['p']}")
 
     def on_error(error):
         print(f"Ignoring error:\n\n{error}")
