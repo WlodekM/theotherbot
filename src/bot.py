@@ -31,8 +31,8 @@ class Commands:
         for i in json.loads(requests.get("https://api.meower.org/users/yourmother").text)["quote"].split(";"):
             stats.append(int(i))
 
-        percentage = "{:.2f}".format((stats[0] / stats[1]) * 100)
-        response = f"Total commands: {stats[0]}\nTotal whois commands: {stats[1]} ({percentage}%)\n(Data since 10th Jan 2023 GMT+13)"
+        percentage = "{:.2f}".format((stats[1] / stats[0]) * 100)
+        response = f"-- BOT STATS --\nTotal commands ran: {stats[0]}\nTotal whois commands ran: {stats[1]} ({percentage}%)\n(Data since 10th Jan 2023 GMT+13)"
         post(cl, response, chat = chat)
 
     def dice(cl, chat, user, args):
