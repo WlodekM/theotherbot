@@ -4,7 +4,7 @@ from PyDictionary import PyDictionary
 
 class Commands:
     def help(cl, chat, user, args):
-        post(cl, "Commands:\n- whois\n- analytics\n- botinfo\n- dice\n- define", chat = chat)
+        post(cl, "Commands:\n- whois\n- stats\n- botinfo\n- dice\n- define", chat = chat)
         
     def botinfo(cl, chat, user, args):
         post(cl, "Yourmother: a Meower bot by @theotherhades\nMade with CloudLink and Python3, hosted on https://railway.app\nGitHub: https://github.com/theotherhades/yourmother-meower-bot", chat = chat)
@@ -26,13 +26,13 @@ class Commands:
 
         post(cl, response, chat = chat)
 
-    def analytics(cl, chat, user, args):
-        analytics = list()
+    def stats(cl, chat, user, args):
+        stats = list()
         for i in json.loads(requests.get("https://api.meower.org/users/yourmother").text)["quote"].split(";"):
-            analytics.append(int(i))
+            stats.append(int(i))
 
-        percentage = "{:.2f}".format((analytics[0] / analytics[1]) * 100)
-        response = f"Total commands: {analytics[0]}\nTotal whois commands: {analytics[1]} ({percentage}%)\n(Data since 10th Jan 2023 GMT+13)"
+        percentage = "{:.2f}".format((stats[0] / stats[1]) * 100)
+        response = f"Total commands: {stats[0]}\nTotal whois commands: {stats[1]} ({percentage}%)\n(Data since 10th Jan 2023 GMT+13)"
         post(cl, response, chat = chat)
 
     def dice(cl, chat, user, args):
