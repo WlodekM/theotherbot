@@ -30,6 +30,7 @@ def get_commands():
         "help": bot.Commands.help,
         "botinfo": bot.Commands.botinfo,
         "whois": bot.Commands.whois,
+        "analytics": bot.Commands.analytics,
         "dice": bot.Commands.dice,
         "define": bot.Commands.define
     }
