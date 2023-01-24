@@ -20,7 +20,7 @@ def get_prefix():
     """
     Get bot's command prefix
     """
-    return "dont"
+    return "idk"
 
 def get_commands():
     """
